@@ -1,0 +1,15 @@
+{
+"auto-merges": [
+  {
+    "name": "odh-dashboard",
+    "src": {
+      "repo": "https://github.com/opendatahub-io/odh-dashboard",
+      "branch": "main"
+    },
+    "dest": {
+      "repo": "https://github.com/red-hat-data-services/odh-dashboard",
+      "branch": "main"
+    }
+  }
+]
+}
