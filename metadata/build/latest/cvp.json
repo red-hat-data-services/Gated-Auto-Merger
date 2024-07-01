@@ -1,0 +1,79 @@
+{
+  "i": 0,
+  "msg_id": "ID:jenkins-1-qrhxp-41549-1718128068671-23283:1:1:1:1",
+  "topic": "/topic/VirtualTopic.eng.ci.redhat-container-image.pipeline.complete",
+  "timestamp": 1719802985.0,
+  "certificate": null,
+  "signature": null,
+  "username": null,
+  "crypto": null,
+  "msg": {
+    "artifact": {
+      "advisory_id": "N/A",
+      "brew_build_tag": "rhods-1.18-rhel-8-container-candidate",
+      "brew_build_target": "rhods-1.18-rhel-8-containers-candidate",
+      "component": "cvp-redhatopenshiftai",
+      "full_name": "Undefined Artifact Image Full Name",
+      "id": "3144251",
+      "image_tag": "Undefined Artifact Image Tag",
+      "issuer": "exd-cpaas-bot-prod",
+      "name": "Undefined Artifact Image Name",
+      "namespace": "Undefined Artifact Image Namespace",
+      "nvr": "odh-operator-bundle-container-v1.18.0-384",
+      "registry_url": "Undefined Artifact Image Registry URL",
+      "scratch": "false",
+      "type": "cvp"
+    },
+    "ci": {
+      "doc": "https://docs.engineering.redhat.com/display/CVP/Container+Verification+Pipeline+E2E+Documentation",
+      "email": "cvp-ops@redhat.com",
+      "name": "Container Verification Pipeline",
+      "team": "CVP Development Team",
+      "url": "https://jenkins0-cvp.apps.ocp-c1.prod.psi.redhat.com/job/cvp-brew-operator-bundle-image-trigger/1281/"
+    },
+    "generated_at": "2024-07-01T03:03:04.966734Z",
+    "pipeline": {
+      "build": "59",
+      "cpaas_pipeline_id": "b635cf97-3491-4a77-bf2c-a0910f92c2a5",
+      "id": "7cac75de-5cce-45f6-8ea2-be60952a29d3",
+      "index_image": {
+        "v4.14": "registry-proxy.engineering.redhat.com/rh-osbs/iib:756942",
+        "v4.15": "registry-proxy.engineering.redhat.com/rh-osbs/iib:756944",
+        "v4.16": "registry-proxy.engineering.redhat.com/rh-osbs/iib:756945"
+      },
+      "name": "cvp-redhat-operator-bundle-image-validation-test",
+      "runtime": "4263.21",
+      "status": "complete"
+    },
+    "run": {
+      "log": "https://jenkins-cvp-617017858ebd9a62aec7c3b8.apps.ocp-c1.prod.psi.redhat.com/job/cvp-redhat-operator-bundle-image-validation-test/59/console",
+      "result_files": [],
+      "url": "https://jenkins-cvp-617017858ebd9a62aec7c3b8.apps.ocp-c1.prod.psi.redhat.com/job/cvp-redhat-operator-bundle-image-validation-test/59/"
+    },
+    "timestamp": "2024-07-01T03:03:04.966734Z",
+    "version": "0.1.0"
+  },
+  "headers": {
+    "CI_NAME": "cvp-redhat-operator-bundle-image-validation-test",
+    "CI_TYPE": "custom",
+    "JMSXUserID": "cvp-jenkins",
+    "amq6100_destination": "queue://Consumer.datanommer.psi-ocp-bm-prod.VirtualTopic.eng.>",
+    "amq6100_originalDestination": "topic://VirtualTopic.eng.ci.redhat-container-image.pipeline.complete",
+    "category": "integration",
+    "correlation-id": "49ea0296-63b2-4bb7-bb4b-e81fd5b34e76",
+    "destination": "/topic/VirtualTopic.eng.ci.redhat-container-image.pipeline.complete",
+    "expires": "1719889385218",
+    "message-id": "ID:jenkins-1-qrhxp-41549-1718128068671-23283:1:1:1:1",
+    "original-destination": "/topic/VirtualTopic.eng.ci.redhat-container-image.pipeline.complete",
+    "persistent": "true",
+    "priority": "4",
+    "source": "https://jenkins-cvp-617017858ebd9a62aec7c3b8.apps.ocp-c1.prod.psi.redhat.com/",
+    "subscription": "/queue/Consumer.datanommer.psi-ocp-bm-prod.VirtualTopic.eng.>",
+    "timestamp": "1719802985218",
+    "topic": "VirtualTopic.eng.ci.redhat-container-image.pipeline.complete",
+    "type": "cvp",
+    "version": "null"
+  },
+  "source_name": "datanommer",
+  "source_version": "0.9.1"
+}

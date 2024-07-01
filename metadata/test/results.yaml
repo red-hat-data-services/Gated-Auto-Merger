@@ -1,0 +1,6 @@
+results:
+  url: https://opendatascience-jenkins-csb-rhods.apps.ocp-c1.prod.psi.redhat.com/job/cypress/job/cypress-tests/8/console
+  pass: 4
+  fail: 0
+  total: 4
+  skipped: 0
