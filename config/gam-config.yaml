@@ -1,0 +1,8 @@
+config:
+  components:
+    - name: Dashboard
+      cpaas_repos: ['odh-dashboard']
+      non_cpaas_repos: []
+      robot_tags: Dashboard
+      Test_Platform: Jenkins
+      Jenkins_Job: ''

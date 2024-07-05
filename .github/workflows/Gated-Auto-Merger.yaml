@@ -1,13 +1,13 @@
-name: Onboard Release Branches
+name: Gated Auto-Merger
 
 on:
-  schedule:
-    - cron:  '0 1 * * *'
   workflow_dispatch:
     inputs:
       component:
-        type: string
-        required: true
+        type: choice
+        description: select component
+        options:
+          - Dashboard
 
 jobs:
   onboard-release-branches:
