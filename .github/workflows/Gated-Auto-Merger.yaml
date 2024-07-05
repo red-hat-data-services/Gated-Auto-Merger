@@ -10,7 +10,7 @@ on:
           - Dashboard
 
 jobs:
-  onboard-release-branches:
+  gated-auto-merger:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -29,8 +29,9 @@ jobs:
         ls
         ls /tmp
     - uses: actions/checkout@v3
-      ref: metadata
-      path: metadata
+      with:
+        ref: metadata
+        path: metadata
     - name: Copy metadata Json
       id: copy_meta
       run: |
