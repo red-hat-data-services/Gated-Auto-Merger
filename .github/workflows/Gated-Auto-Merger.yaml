@@ -28,6 +28,7 @@ jobs:
       shell: bash
       id: trigger_gam
       run: |
+        cd main
         python src/main.py --component ${{ github.event.inputs.component }}
         echo "inside main"
         pwd
@@ -58,6 +59,7 @@ jobs:
       uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        directory: metadata
         branch: metadata
         message: "Adding metadata.yaml for execution-id ${{ steps.copy_meta.outputs.EXECUTION_ID }}"
         repository: red-hat-data-services/Gated-Auto-Merger
