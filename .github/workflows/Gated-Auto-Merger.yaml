@@ -44,17 +44,14 @@ jobs:
         meta=$(yq -o json main/$METADATA)
         execution_id=$(echo $meta | jq -r '.metadata.execution_id')
         echo "execution_id=$execution_id"
-        mkdir metadata/${execution_id}
-        cp main/data/metadata.yaml metadata/${execution_id}/metadata.yaml
+        mkdir metadata/executions/${execution_id}
+        cp main/data/metadata.yaml metadata/executions/${execution_id}
         echo "inside metadata"
-        cd metadata/${execution_id}/
+        cd metadata/executions/${execution_id}/
         pwd
         ls
         cat metadata.yaml
         echo "EXECUTION_ID=${EXECUTION_ID}" >> $GITHUB_OUTPUT
-        cd ../
-        ls
-        pwd
     - name: Commit and push changes to main branch
       uses: actions-js/push@master
       with:
