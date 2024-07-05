@@ -29,7 +29,7 @@ class gam_controller:
         meta = self.component_config
         meta['execution_id'] = self.execution_id
         with open('data/metadata.yaml', 'w') as metadata:
-            metadata.write(yaml.dump(meta))
+            metadata.write(yaml.dump({'metadata': meta}))
         return meta
 
     def post_umb_message(self):

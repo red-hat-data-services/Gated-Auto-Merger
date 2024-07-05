@@ -8,6 +8,8 @@ on:
         description: select component
         options:
           - Dashboard
+env:
+  METADATA: "data/metadata.yaml"
 
 jobs:
   gated-auto-merger:
@@ -35,9 +37,16 @@ jobs:
     - name: Copy metadata Json
       id: copy_meta
       run: |
+        meta=$(yq -o json $METADATA)
+        execution_id=$(echo $meta | jq -r '.metadata.execution_id')
+        mkdir metadata/${execution_id}
+        cp data/metadata.yaml metadata/${execution_id}/
         echo "inside metadata"
+        cd metadata/${execution_id}/
+        cp
         pwd
         ls
+        cat metadata.yaml
 #    - name: Commit and push changes to main branch
 #      uses: actions-js/push@master
 #      with:
