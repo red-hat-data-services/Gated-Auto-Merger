@@ -47,10 +47,11 @@ jobs:
         pwd
         ls
         cat metadata.yaml
-#    - name: Commit and push changes to main branch
-#      uses: actions-js/push@master
-#      with:
-#        github_token: ${{ secrets.GITHUB_TOKEN }}
-#        branch: metadata
-#        message: "Adding ${{ steps.remove_release_from_config.outputs.RELEASE_TO_BE_SETUP }} to releases.yaml"
-#        repository: red-hat-data-services/rhods-devops-infra
+        echo "EXECUTION_ID=${EXECUTION_ID}" >> $GITHUB_OUTPUT
+    - name: Commit and push changes to main branch
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: metadata
+        message: "Adding metadata.yaml for execution-id ${{ steps.copy_meta.outputs.EXECUTION_ID }}"
+        repository: red-hat-data-services/Gated-Auto-Merger
