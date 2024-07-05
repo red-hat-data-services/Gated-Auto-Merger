@@ -28,6 +28,8 @@ class gam_controller:
     def generate_execution_metadata(self):
         meta = self.component_config
         meta['execution_id'] = self.execution_id
+        with open('tmp/metadata.yaml', 'w') as metadata:
+            metadata.write(yaml.dump(meta))
         return meta
 
     def post_umb_message(self):
@@ -36,8 +38,7 @@ class gam_controller:
             print(os.getcwd())
             url = "https://api.enterprise.redhat.com/hydra/umb-bridge/v1/publish"
             payload = json.load(open('data/umb_payload_template.json'))
-            payload['gam'] |= self.component_config
-            payload['gam']['execution_id'] = self.execution_id
+            payload['gam'] |= self.execution_metadata
             print('hydra payload ', payload)
             payload = json.dumps(payload)
             secret_token = os.getenv('HYDRA_TOKEN')  # Retrieve secret token from environment variable
