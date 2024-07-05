@@ -39,8 +39,9 @@ jobs:
       run: |
         meta=$(yq -o json $METADATA)
         execution_id=$(echo $meta | jq -r '.metadata.execution_id')
+        echo "execution_id=$execution_id"
         mkdir metadata/${execution_id}
-        cp data/metadata.yaml metadata/${execution_id}/
+        cp data/metadata.yaml metadata/${execution_id}/metadata.yaml
         echo "inside metadata"
         cd metadata/${execution_id}/
         cp
