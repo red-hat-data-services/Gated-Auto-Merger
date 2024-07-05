@@ -28,7 +28,7 @@ class gam_controller:
     def generate_execution_metadata(self):
         meta = self.component_config
         meta['execution_id'] = self.execution_id
-        with open('tmp/metadata.yaml', 'w') as metadata:
+        with open('data/metadata.yaml', 'w') as metadata:
             metadata.write(yaml.dump(meta))
         return meta
 
