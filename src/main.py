@@ -7,4 +7,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     gc = gam_controller(args.component)
     print(gc.component_config)
-    # gc.post_umb_message()
+    gc.post_umb_message()
