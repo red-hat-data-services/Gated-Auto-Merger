@@ -1,0 +1,9 @@
+metadata:
+  Jenkins_Job: ''
+  Test_Platform: Jenkins
+  cpaas_repos:
+  - odh-dashboard
+  execution_id: '290824065224946204'
+  name: Dashboard
+  non_cpaas_repos: []
+  robot_tags: Dashboard
