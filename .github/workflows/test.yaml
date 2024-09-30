@@ -1,6 +1,6 @@
 name: Test Trigger From GH CLI
 
-run-name: GAM Trigger - ${{ inputs.component }}-${{ inputs.workflow_run_id }} by @${{ github.actor }}
+run-name: GAM Trigger - ${{ inputs.component }}-${{ inputs.workflow_run_id }}
 
 on:
   workflow_dispatch:
@@ -21,6 +21,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Show GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: Change Github Actor name
+        run: echo "$GITHUB_ACTOR"
+
+      - name: sleep for 1 minute
+        run: sleep 60
+
       - name: Print a message
         run: |
           echo "Hello, this is a workflow triggered by workflow_dispatch!"
