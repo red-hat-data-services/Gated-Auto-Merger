@@ -1,0 +1,24 @@
+name: Test Trigger From GH CLI
+
+run-name: GAM Trigger - ${{ inputs.component }}-${{ inputs.workflow_run_id }} by @${{ github.actor }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      component:
+        type: choice
+        description: select component
+        options:
+          - Dashboard
+      workflow_run_id:
+        description: 'Execution ID (default is current date and time)'
+        required: false
+        default: '${{ github.event.workflow_run.created_at }}'  # Default to the date and time of the workflow run
+
+jobs:
+  print-message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print a message
+        run: echo "Hello, this is a workflow triggered by workflow_dispatch!"
