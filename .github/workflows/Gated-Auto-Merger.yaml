@@ -1,6 +1,20 @@
 name: Gated Auto-Merger
 
 on:
+  workflow_call:
+    inputs:
+      component:
+        type: string
+        description: Component for which GAM should be triggered
+        required: true
+    secrets:
+      APP_ID:
+        description: 'Github App ID passed from the caller workflow'
+        required: true
+      PRIVATE_KEY:
+        description: 'Github App private key passed from the caller workflow'
+        required: true
+
   workflow_dispatch:
     inputs:
       component:
@@ -17,6 +31,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
+        repository: red-hat-data-services/Gated-Auto-Merger
+        ref: main
         path: main
 
     - name: Set up Python environment
@@ -39,10 +55,31 @@ jobs:
       id: trigger_gam
       run: |
         cd main
-        pipenv run python src/main.py --component ${{ github.event.inputs.component }}
+        pipenv run python src/main.py --component ${{ inputs.component }}
+
+    - uses: actions/create-github-app-token@v1
+      id: app-token
+      with:
+        app-id: ${{ secrets.APP_ID }}
+        private-key: ${{ secrets.PRIVATE_KEY }}
+        owner: red-hat-data-services
+        repositories: Gated-Auto-Merger
+
+    - name: Get GitHub App User ID
+      id: get-user-id
+      run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+      env:
+        GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
+    - name: configure git committer string
+      run: |
+        git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+        git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com>'
 
     - uses: actions/checkout@v3
       with:
+        repository: red-hat-data-services/Gated-Auto-Merger
+        token: ${{ steps.app-token.outputs.token }}
         ref: metadata
         path: metadata
 
@@ -50,23 +87,29 @@ jobs:
       id: copy_meta
       run: |
         meta=$(yq -o json main/$METADATA)
-        execution_id=$(echo $meta | jq -r '.metadata.execution_id')
-        component_name=$(echo $meta | jq -r '.metadata.name')
+        execution_id=$(echo "$meta" | jq -r '.metadata.execution_id')
+        component_name=$(echo "$meta" | jq -r '.metadata.name')
 
         metadata_folder="metadata/executions/${component_name}/${execution_id}"
         mkdir -p ${metadata_folder}
         cp main/$METADATA ${metadata_folder}
 
-        echo "Metadata File: ${metadata_folder}"
-        echo "Copied Metadata:"
         cat ${metadata_folder}/metadata.yaml
-        echo "EXECUTION_ID=${execution_id}" >> $GITHUB_OUTPUT
 
-    - name: Commit and push changes to main branch
-      uses: actions-js/push@master
+        echo "----------------------------------------------------"
+        echo "EXECUTION_ID=${execution_id}" | tee -a $GITHUB_OUTPUT
+        echo "METADATA_FILE=${metadata_folder}/metadata.yaml" | tee -a $GITHUB_OUTPUT
+    
+    - uses: actions/upload-artifact@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        directory: metadata
-        branch: metadata
-        message: "Adding metadata.yaml for execution-id ${{ steps.copy_meta.outputs.EXECUTION_ID }}"
-        repository: red-hat-data-services/Gated-Auto-Merger
+        name: metadata_file
+        path: ${{ steps.copy_meta.outputs.METADATA_FILE }}
+        if-no-files-found: error
+
+    - name: Commit and push changes to metadata branch
+      run: |
+        cd metadata
+        git status
+        git add .
+        git commit -m "Adding metadata.yaml for execution-id ${{ steps.copy_meta.outputs.EXECUTION_ID }}"
+        git push origin metadata
