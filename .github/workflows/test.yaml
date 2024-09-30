@@ -12,8 +12,9 @@ on:
           - Dashboard
       workflow_run_id:
         description: 'Execution ID (default is current date and time)'
+        default: "12345"
         required: false
-        default: '${{ github.event.workflow_run.created_at }}'  # Default to the date and time of the workflow run
+        
 
 jobs:
   print-message:
@@ -21,4 +22,8 @@ jobs:
 
     steps:
       - name: Print a message
-        run: echo "Hello, this is a workflow triggered by workflow_dispatch!"
+        run: |
+          echo "Hello, this is a workflow triggered by workflow_dispatch!"
+          echo "Component: ${{ inputs.component }}"
+          echo "Workflow Run ID: ${{ inputs.workflow_run_id }}"
+
