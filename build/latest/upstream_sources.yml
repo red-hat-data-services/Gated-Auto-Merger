@@ -1,7 +1,7 @@
 git:
 - automerge: 'yes'
   branch: incubation
-  commit: 73823da64ef7f61596c69a600985a9e52b89aadc
+  commit: cb860319be3fefa7876ae66636eed65aa6688651
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: main
@@ -13,7 +13,7 @@ git:
   url: https://github.com/opendatahub-io/kubeflow.git
 - automerge: 'yes'
   branch: main
-  commit: 889245e6247925ae30142049355277fbe2567e4a
+  commit: 6acadc21307a9c40248086f755f85897ec0b12fc
   url: https://github.com/opendatahub-io/modelmesh-serving.git
 - automerge: 'yes'
   branch: main
@@ -61,7 +61,7 @@ git:
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: main
-  commit: dd760d5673e7d8da9f275c9722c972867965f3cf
+  commit: 2b77e1cb0e0ebbba2c233feec7dea88c28064d26
   url: https://github.com/opendatahub-io/notebooks.git
 - automerge: 'yes'
   branch: release-v0.12.1
