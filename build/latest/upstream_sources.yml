@@ -1,7 +1,7 @@
 git:
 - automerge: 'yes'
   branch: incubation
-  commit: 85c9448de09c77146be28f904c77333b8073e2ef
+  commit: 77b6db88ee553279d9dfa743c533dec9b91736af
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: main
@@ -9,7 +9,7 @@ git:
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: main
-  commit: a3bf3dff36f50f2804dcb332e23c2d105a6374c6
+  commit: 73d8936de9579c6d2923088616df2b523fe1df2a
   url: https://github.com/opendatahub-io/kubeflow.git
 - automerge: 'yes'
   branch: main
@@ -57,7 +57,7 @@ git:
   url: https://github.com/opendatahub-io/codeflare-operator.git
 - automerge: 'yes'
   branch: main
-  commit: 0ccfaac508089010b6635541970b9a8d021b647e
+  commit: 0fa5f3ce2489a0375eeda98b3d595480ff8ac554
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: main
