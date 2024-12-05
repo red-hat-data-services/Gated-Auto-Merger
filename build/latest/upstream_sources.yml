@@ -1,11 +1,11 @@
 git:
 - automerge: 'yes'
   branch: incubation
-  commit: b41b6aa06a641120b5dec133e1986f8c81bf02b4
+  commit: 0385779f319884c9ff6373e32de2bb59b016a86a
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: main
-  commit: e4bac8884105d7f024c3d6ef6bdb98b982914e80
+  commit: ca3d3e4977d909575f7d6ab718db3e6fd5d63c3c
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: main
@@ -41,7 +41,7 @@ git:
   url: https://github.com/trustyai-explainability/trustyai-explainability.git
 - automerge: 'yes'
   branch: main
-  commit: c9467b567b2499a9ee38fd2d8ab479d58698de57
+  commit: faaab010757e929dccef64e90aa101db4d321b3c
   url: https://github.com/trustyai-explainability/trustyai-service-operator.git
 - automerge: 'yes'
   branch: main
@@ -57,7 +57,7 @@ git:
   url: https://github.com/opendatahub-io/codeflare-operator.git
 - automerge: 'yes'
   branch: main
-  commit: a3ff979625b3c8787f3c68f811082c930b63fa38
+  commit: 03d5ee39debdf6802dfbcc66aa875cf2dffd2139
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: main
