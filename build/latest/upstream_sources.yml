@@ -5,11 +5,11 @@ git:
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: main
-  commit: 6fdafbae655677d3d10a71f50979eea5a1d2ac12
+  commit: a1accaf1383c2ca728e419a704031a469add7228
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: main
-  commit: 0ed590414e5754fc599a41c0e04109899f3875f8
+  commit: 0e7e77bfe84a0989af261342ae6796f0059b9bb7
   url: https://github.com/opendatahub-io/kubeflow.git
 - automerge: 'yes'
   branch: main
