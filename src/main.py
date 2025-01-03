@@ -1,10 +1,10 @@
-from gam_controller import gam_controller
+from gam_controller import GamController
 import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--component', required=True, help='Name of the Business Component', dest='component')
     args = parser.parse_args()
-    gc = gam_controller(args.component)
+    gc = GamController(args.component)
     print(gc.component_config)
-    gc.post_umb_message()
+    #gc.post_umb_message()
