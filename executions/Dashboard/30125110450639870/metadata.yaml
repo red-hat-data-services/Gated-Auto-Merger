@@ -1,0 +1,20 @@
+config:
+  automerge: 'yes'
+  name: Dashboard
+  repositories:
+  - dest:
+      branch: main
+      url: https://github.com/red-hat-data-services/odh-dashboard.git
+    name: odh-dashboard
+    src:
+      branch: main
+      url: https://github.com/opendatahub-io/odh-dashboard.git
+  test_config:
+    job_url: ''
+    platform: Jenkins
+    robot_tags:
+    - Dashboard
+metadata:
+  execution_id: 030125110450639873
+  job_run_url: null
+  result: null
