@@ -16,6 +16,7 @@ class GamController:
         self.component_config = self.read_component_config()
         self.execution_id = self.generate_execution_id()
         self.execution_metadata = self.generate_execution_metadata()
+        self.hydra_payload = self.generate_hydra_payload()
 
     def read_gam_config(self):
         return yaml.load(open(GAM_CONFIG), Loader=yaml.SafeLoader)
@@ -39,34 +40,25 @@ class GamController:
                 
             }
         }
-        print(execution_metadata)
         with open(METADATA, 'w') as metadata:
             metadata.write(yaml.dump(execution_metadata))
         return execution_metadata
+    
+    def generate_hydra_payload(self):
+        payload = json.load(open(UMB_PAYLOAD_TEMPLATE))
+        payload['gam'] |= self.execution_metadata
+        return json.dumps(payload)
 
     def post_umb_message(self):
         try:
-            payload = json.load(open(UMB_PAYLOAD_TEMPLATE))
-            payload['gam'] |= self.execution_metadata
-            print('hydra payload ', payload)
-            payload = json.dumps(payload)
-            
-             # Retrieve secret token from environment variable
+            # Retrieve secret token from environment variable
             hydra_token = os.getenv('HYDRA_TOKEN') 
             if hydra_token is None:
                 raise ValueError("Secret token not found in environment variables.")
 
     
-            hydra = HydraAdapter(payload, hydra_token)
-            response = hydra.post_umb_message()
-            
-            if response:
-                print("UMB Message Sent Sucessfully!")
-            else:
-                print("Request Failed!")
-
-            print("Response Status Code:", response.status_code)
-            print("Response Body:", response.text)
+            hydra = HydraAdapter(self.hydra_payload, hydra_token)
+            return hydra.post_umb_message()
 
         except Exception as e:
             print("Error: Unable to post UMB message.")
