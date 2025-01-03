@@ -1,22 +1,18 @@
 name: Gated Auto-Merger
 
-on:
-  workflow_call:
-    inputs:
-      component:
-        type: string
-        description: Component for which GAM should be triggered
-        required: true
-    secrets:
-      APP_ID:
-        description: 'Github App ID passed from the caller workflow'
-        required: true
-      PRIVATE_KEY:
-        description: 'Github App private key passed from the caller workflow'
-        required: true
+run-name: GAM Trigger - ${{ inputs.component }}-${{ inputs.gam_trigger_run_id }}
 
+on:
   workflow_dispatch:
     inputs:
+      gam_trigger_repository:
+        description: 'Github Repository of the GAM Trigger Workflow'
+        default: "$GITHUB_REPOSITORY"
+        required: true
+      gam_trigger_run_id:
+        description: 'Workflow Run ID of the GAM Trigger Workflow'
+        default: "$GITHUB_RUN_ID"
+        required: true
       component:
         type: choice
         description: select component
@@ -29,6 +25,10 @@ jobs:
   gated-auto-merger:
     runs-on: ubuntu-latest
     steps:
+    - name: Print Trigger Workflow Details 
+      run: |
+        echo "This workflow was triggered by https://github.com/${{ inputs.gam_trigger_repository }}/actions/runs/${{ inputs.gam_trigger_run_id }}"
+
     - uses: actions/checkout@v3
       with:
         repository: red-hat-data-services/Gated-Auto-Merger
@@ -88,7 +88,7 @@ jobs:
       run: |
         meta=$(yq -o json main/$METADATA)
         execution_id=$(echo "$meta" | jq -r '.metadata.execution_id')
-        component_name=$(echo "$meta" | jq -r '.metadata.name')
+        component_name=$(echo "$meta" | jq -r '.config.name')
 
         metadata_folder="metadata/executions/${component_name}/${execution_id}"
         mkdir -p ${metadata_folder}
@@ -97,6 +97,7 @@ jobs:
         cat ${metadata_folder}/metadata.yaml
 
         echo "----------------------------------------------------"
+        echo "COMPONENT_NAME=${component_name}" | tee -a $GITHUB_OUTPUT
         echo "EXECUTION_ID=${execution_id}" | tee -a $GITHUB_OUTPUT
         echo "METADATA_FILE=${metadata_folder}/metadata.yaml" | tee -a $GITHUB_OUTPUT
     
@@ -111,5 +112,5 @@ jobs:
         cd metadata
         git status
         git add .
-        git commit -m "Adding metadata.yaml for execution-id ${{ steps.copy_meta.outputs.EXECUTION_ID }}"
+        git commit -m "Adding metadata.yaml - Component: ${{ steps.copy_meta.outputs.COMPONENT_NAME }}, Execution ID: ${{ steps.copy_meta.outputs.EXECUTION_ID }}"
         git push origin metadata
