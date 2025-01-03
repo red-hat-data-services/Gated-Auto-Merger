@@ -47,7 +47,7 @@ class GamController:
     def generate_hydra_payload(self):
         payload = json.load(open(UMB_PAYLOAD_TEMPLATE))
         payload['gam'] |= self.execution_metadata
-        return json.dumps(payload)
+        return payload
 
     def post_umb_message(self):
         try:
@@ -56,8 +56,8 @@ class GamController:
             if hydra_token is None:
                 raise ValueError("Secret token not found in environment variables.")
 
-    
-            hydra = HydraAdapter(self.hydra_payload, hydra_token)
+            payload = json.dumps(self.hydra_payload)
+            hydra = HydraAdapter(payload, hydra_token)
             return hydra.post_umb_message()
 
         except Exception as e:
