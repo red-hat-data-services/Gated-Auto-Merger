@@ -1,4 +1,5 @@
 from gam_controller import GamController
+import json
 import argparse
 
 if __name__ == '__main__':
@@ -10,13 +11,13 @@ if __name__ == '__main__':
     print("====================================================")
     print("                 Component Config                   ")
     print("====================================================")
-    print(gc.component_config)
+    print(json.dumps(json.loads(gc.component_config), indent=4))
     print()
     
     print("====================================================")
     print("                 Hydra Payload                      ")
     print("====================================================")
-    print(gc.hydra_payload)
+    print(json.dumps(json.loads(gc.hydra_payload), indent=4))
     print()
 
     
@@ -27,5 +28,6 @@ if __name__ == '__main__':
     else:
         print("Request Failed!")
 
+    print("Response:", response)
     print("Response Status Code:", response.status_code)
     print("Response Body:", response.text)
