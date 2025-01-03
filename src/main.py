@@ -11,13 +11,13 @@ if __name__ == '__main__':
     print("====================================================")
     print("                 Component Config                   ")
     print("====================================================")
-    print(json.dumps(json.loads(gc.component_config), indent=4))
+    print(json.dumps(gc.component_config), indent=4)
     print()
     
     print("====================================================")
     print("                 Hydra Payload                      ")
     print("====================================================")
-    print(json.dumps(json.loads(gc.hydra_payload), indent=4))
+    print(json.dumps(gc.hydra_payload), indent=4)
     print()
 
     
