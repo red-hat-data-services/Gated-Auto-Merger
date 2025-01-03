@@ -1,19 +1,19 @@
 from gam_controller import GamController
 import json
 import argparse
+import sys
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--component', required=True, help='Name of the Business Component', dest='component')
     args = parser.parse_args()
-    gc = GamController(args.component)
     
+    gc = GamController(args.component)
     print("====================================================")
     print("                 Component Config                   ")
     print("====================================================")
     print(json.dumps(gc.component_config, indent=4))
     print()
-    
     print("====================================================")
     print("                 Hydra Payload                      ")
     print("====================================================")
@@ -23,11 +23,15 @@ if __name__ == '__main__':
     
     # Post UMB Message
     response = gc.post_umb_message()
-    if response:
-        print("UMB Message Sent Sucessfully!")
-    else:
-        print("Request Failed!")
-
+    
+    # Print response details
     print("Response:", response)
     print("Response Status Code:", response.status_code)
     print("Response Body:", response.text)
+
+    # Check if the response was successful (status code 2xx)
+    if response.ok:
+        print("UMB Message Sent Successfully!")
+    else:
+        print("Request Failed!")
+        sys.exit(1)  # Exit the program with a non-zero status code to indicate failure
