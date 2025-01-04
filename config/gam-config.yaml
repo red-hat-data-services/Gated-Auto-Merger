@@ -12,6 +12,7 @@ components:
         dest:
           url: https://github.com/red-hat-data-services/odh-dashboard-sync.git
           branch: main
+        ignore_files: ".env, .env.test"
       - name: odh-operator
         src:
           url: https://github.com/opendatahub-io/opendatahub-operator.git
