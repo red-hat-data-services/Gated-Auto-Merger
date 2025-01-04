@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -exo pipefail
 UPSTREAM_REPO="${UPSTREAM_REPO:-$1}"
 UPSTREAM_BRANCH="${UPSTREAM_BRANCH:-$2}"
 DOWNSTREAM_REPO="${DOWNSTREAM_REPO:-$3}"
@@ -31,7 +31,7 @@ git fetch ${FETCH_ARGS} upstream
 
 git checkout ${DOWNSTREAM_BRANCH}
 
-
+touch .gitattributes
 if [ -n "$IGNORE_FILES" ]; then
     IFS=', ' read -r -a exclusions <<< "$IGNORE_FILES"
     for exclusion in "${exclusions[@]}"
