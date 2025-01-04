@@ -1,61 +1,74 @@
 import json
-
-import yaml
-from datetime import datetime
-from hydra_adapter import hydra_adapter
 import os
-# generate execution id and update to metadata branch
+import yaml
+from hydra_adapter import HydraAdapter
+import util
 
-__GAM_CONFIG__ = 'config/gam-config.yaml'
-class gam_controller:
-    def __init__(self, business_component:str):
+GAM_CONFIG = 'config/gam-config.yaml'
+METADATA = 'data/metadata.yaml'
+HYDRA_PAYLOAD_TEMPLATE = 'data/hydra_payload_template.json'
+
+class GamController:
+    def __init__(self, business_component: str, execution_id: str):
         self.business_component = business_component
         self.gam_config = self.read_gam_config()
         self.component_config = self.read_component_config()
-        self.execution_id = self.generate_execution_id()
+        self.execution_id = execution_id
         self.execution_metadata = self.generate_execution_metadata()
-
-
-    def read_component_config(self):
-        return [component for component in self.gam_config['config']['components'] if component['name'] == self.business_component][0]
+        self.hydra_payload = self.generate_hydra_payload()
 
     def read_gam_config(self):
-        return yaml.load(open(__GAM_CONFIG__), Loader=yaml.SafeLoader)
+        return yaml.load(open(GAM_CONFIG), Loader=yaml.SafeLoader)
+    
+    def read_component_config(self):
+        try:
+            return [component for component in self.gam_config['components'] if component['name'] == self.business_component][0]
+        except IndexError:
+            raise ValueError(f"Component '{self.business_component}' not found in the configuration '{GAM_CONFIG}'.")
 
-    def generate_execution_id(self):
-        return datetime.now().strftime('%d%m%y%H%M%S%f')
+    # def generate_execution_id(self):
+    #     return datetime.now().strftime('%d%m%y%H%M%S%f')
 
     def generate_execution_metadata(self):
-        meta = self.component_config
-        meta['execution_id'] = self.execution_id
-        with open('data/metadata.yaml', 'w') as metadata:
-            metadata.write(yaml.dump({'metadata': meta}))
-        return meta
+        # Initialize the execution metadata template
+        execution_metadata_template = {
+            'config': self.component_config,
+            'metadata': {
+                'execution_id': self.execution_id,
+                'git': None,
+                'job_run_url': None,
+                'nvr': None,
+                'result': None,
+                'status': None
+            }
+        }
+        # Populate Execution Metadata Template
+        execution_metadata = util.populate_execution_metadata(execution_metadata_template, self.component_config)
+
+        # Save the updated metadata to the file
+        with open(METADATA, 'w') as metadata:
+            metadata.write(yaml.dump(execution_metadata))
+
+        return execution_metadata
+    
+    
+    def generate_hydra_payload(self):
+        payload = json.load(open(HYDRA_PAYLOAD_TEMPLATE))
+        payload['gam'] |= self.execution_metadata
+        return payload
+
 
     def post_umb_message(self):
         try:
-            hydra = hydra_adapter()
-            print(os.getcwd())
-            url = "https://api.enterprise.redhat.com/hydra/umb-bridge/v1/publish"
-            payload = json.load(open('data/umb_payload_template.json'))
-            payload['gam'] |= self.execution_metadata
-            print('hydra payload ', payload)
-            payload = json.dumps(payload)
-            secret_token = os.getenv('HYDRA_TOKEN')  # Retrieve secret token from environment variable
-            if secret_token is None:
+            # Retrieve secret token from environment variable
+            hydra_token = os.getenv('HYDRA_TOKEN') 
+            if hydra_token is None:
                 raise ValueError("Secret token not found in environment variables.")
 
-            signature = hydra.generate_signature(payload, secret_token)
-            print("Generated Signature:", signature)
-
-            response = hydra.send_post_request(url, payload, signature)
-            if response:
-                print("Request Successful!")
-            else:
-                print("Request Failed!")
-
-            print("Response Status Code:", response.status_code)
-            print("Response Body:", response.text)
+            payload = json.dumps(self.hydra_payload)
+            hydra = HydraAdapter(payload, hydra_token)
+            return hydra.post_umb_message()
 
         except Exception as e:
+            print("Error: Unable to post UMB message.")
             print("Error:", e)

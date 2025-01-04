@@ -1,8 +1,22 @@
-config:
-  components:
-    - name: Dashboard
-      cpaas_repos: ['odh-dashboard']
-      non_cpaas_repos: []
-      robot_tags: Dashboard
-      Test_Platform: Jenkins
-      Jenkins_Job: ''
+components:
+  - name: Dashboard
+    automerge: 'false'
+    test_config:
+      robot_tags: ['Dashboard']
+      platform: Jenkins
+      job_url: ''
+    repositories:
+      - name: odh-dashboard
+        src:
+          url: https://github.com/opendatahub-io/odh-dashboard.git
+          branch: main
+        dest:
+          url: https://github.com/red-hat-data-services/odh-dashboard.git
+          branch: main
+      - name: odh-operator
+        src:
+          url: https://github.com/opendatahub-io/opendatahub-operator.git
+          branch: incubation
+        dest:
+          url: https://github.com/red-hat-data-services/odh-dashboard.git
+          branch: main

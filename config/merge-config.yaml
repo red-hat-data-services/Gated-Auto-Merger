@@ -1,9 +1,0 @@
-git:
-- name: odh-dashboard
-  automerge: 'yes'
-  src:
-    url: https://github.com/opendatahub-io/odh-dashboard.git
-    branch: main
-  dest:
-    url: https://github.com/red-hat-data-services/odh-dashboard.git
-    branch: main

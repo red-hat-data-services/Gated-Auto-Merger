@@ -1,34 +1,54 @@
 name: Gated Auto-Merger
 
-on:
-  workflow_call:
-    inputs:
-      component:
-        type: string
-        description: Component for which GAM should be triggered
-        required: true
-    secrets:
-      APP_ID:
-        description: 'Github App ID passed from the caller workflow'
-        required: true
-      PRIVATE_KEY:
-        description: 'Github App private key passed from the caller workflow'
-        required: true
+run-name: GAM Trigger - ${{ inputs.component }}-${{ inputs.gam_trigger_run_id }}
 
+on:
   workflow_dispatch:
     inputs:
       component:
         type: choice
         description: select component
+        required: true
         options:
           - Dashboard
+      gam_trigger_repository:
+        description: 'Github Repository of the GAM Trigger Workflow. (Leave this field empty when triggered via the UI)'
+        required: false
+      gam_trigger_run_id:
+        description: 'Workflow Run ID of the GAM Trigger Workflow. (Leave this field empty when triggered via the UI)'
+        required: false
+      gam_execution_id:
+        description: 'A Unique ID for The GAM Execution. (Leave this field empty when triggered via the UI)'
+        required: false
+
 env:
   METADATA: "data/metadata.yaml"
+  GAM_TRIGGER_REPOSITORY: ${{ inputs.gam_trigger_repository }}
+  GAM_EXECUTION_ID: ${{ inputs.gam_execution_id }}
+  GAM_TRIGGER_RUN_ID: ${{ inputs.gam_trigger_run_id }}
 
 jobs:
   gated-auto-merger:
     runs-on: ubuntu-latest
     steps:
+    - name: Generate input variables if empty
+      run: |
+        if [ -z "${{ env.GAM_TRIGGER_REPOSITORY }}" ]; then
+            echo "GAM_TRIGGER_REPOSITORY=$GITHUB_REPOSITORY" | tee -a $GITHUB_ENV
+        fi
+
+        if [ -z "${{ env.GAM_TRIGGER_RUN_ID }}" ]; then
+            echo "GAM_TRIGGER_RUN_ID=$GITHUB_RUN_ID" | tee -a $GITHUB_ENV
+        fi
+
+        if [ -z "${{ env.GAM_EXECUTION_ID }}" ]; then
+            echo "GAM_EXECUTION_ID=$(date +"%d%m%y%H%M%S%6N")" | tee -a $GITHUB_ENV
+        fi
+
+    - name: Print Trigger Workflow Details 
+      run: |
+        echo "This workflow was triggered by https://github.com/${{ env.GAM_TRIGGER_REPOSITORY }}/actions/runs/${{ env.GAM_TRIGGER_RUN_ID }}"
+
     - uses: actions/checkout@v3
       with:
         repository: red-hat-data-services/Gated-Auto-Merger
@@ -55,7 +75,7 @@ jobs:
       id: trigger_gam
       run: |
         cd main
-        pipenv run python src/main.py --component ${{ inputs.component }}
+        pipenv run python src/main.py --component ${{ inputs.component }} --execution_id ${{ env.GAM_EXECUTION_ID }}
 
     - uses: actions/create-github-app-token@v1
       id: app-token
@@ -87,17 +107,14 @@ jobs:
       id: copy_meta
       run: |
         meta=$(yq -o json main/$METADATA)
-        execution_id=$(echo "$meta" | jq -r '.metadata.execution_id')
-        component_name=$(echo "$meta" | jq -r '.metadata.name')
 
-        metadata_folder="metadata/executions/${component_name}/${execution_id}"
+        metadata_folder="metadata/executions/${{ inputs.component }}/${{ env.GAM_EXECUTION_ID }}"
         mkdir -p ${metadata_folder}
         cp main/$METADATA ${metadata_folder}
 
         cat ${metadata_folder}/metadata.yaml
 
         echo "----------------------------------------------------"
-        echo "EXECUTION_ID=${execution_id}" | tee -a $GITHUB_OUTPUT
         echo "METADATA_FILE=${metadata_folder}/metadata.yaml" | tee -a $GITHUB_OUTPUT
     
     - uses: actions/upload-artifact@v4
@@ -111,5 +128,5 @@ jobs:
         cd metadata
         git status
         git add .
-        git commit -m "Adding metadata.yaml for execution-id ${{ steps.copy_meta.outputs.EXECUTION_ID }}"
+        git commit -m "Adding metadata.yaml - Component: '${{ inputs.component }}', Execution ID: '${{ env.GAM_EXECUTION_ID }}'"
         git push origin metadata
