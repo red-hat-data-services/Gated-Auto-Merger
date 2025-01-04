@@ -1,0 +1,114 @@
+name: Trigger Auto Merge
+on:
+  push:
+    branches:
+      - metadata # Trigger only on the 'metadata' branch
+    paths:
+      - 'executions/**/test-report.html' # File path pattern for test-report.html
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.config }}
+      trigger_automerge: ${{ steps.matrix.outputs.trigger_automerge }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          # Enable listing of files matching each filter.
+          # Paths to files will be available in `${FILTER_NAME}_files` output variable.
+          # Paths will be escaped and space-delimited.
+          # Output is usable as command-line argument list in Linux shell
+          list-files: shell
+          # Detect changes against the most recent commit on the same branch before the push
+          base: ${{ github.ref }}
+          # Only filters added or modified files.
+          filters: |
+            test_report:
+              - added|modified: 'executions/**/test-report.html'
+
+      - name: Print File Paths
+        if: ${{ steps.filter.outputs.test_report == 'true' }}
+        env:
+          TEST_REPORT_FILE: ${{ steps.filter.outputs.test_report_files }}
+        run: |
+          echo "METADATA_FILE=${TEST_REPORT_FILE%/*}/metadata.yaml" | tee -a $GITHUB_ENV
+          echo "Test Report File: ${{ env.TEST_REPORT_FILE }}"
+
+      - name: Generate Matrix Config
+        if: ${{ steps.filter.outputs.test_report == 'true' }}
+        id: matrix
+        run: |
+            trigger_automerge=$(yq -o json ${{ env.METADATA_FILE }} | jq -c '.metadata.trigger_automerge')
+            trigger_automerge=$(echo "$trigger_automerge" | tr '[:upper:]' '[:lower:]')
+            
+            if [ "$trigger_automerge" == "yes" ]; then
+                echo "'trigger_automerge' is set to 'yes'."
+                echo "trigger_automerge=yes" >> $GITHUB_OUTPUT
+            elif [ "$trigger_automerge" == "no" ]; then
+                echo "'trigger_automerge' is not set to 'no'. Auto merge will be skipped!"
+                echo "trigger_automerge=no" >> $GITHUB_OUTPUT
+            else
+                echo "Invalid value \"$trigger_automerge\" for 'trigger_automerge'."
+                exit 1
+            fi
+
+            config=$(yq -o json ${{ env.METADATA_FILE }} | jq -c '.metadata.git')
+            echo "${config}" | jq '.'
+
+            length=$(echo $config | jq '. | length')
+            echo "$length repo(s) will be synced by this workflow"
+            
+            if [[ $length -eq 0 ]]
+            then 
+                echo "No valid repos available for auto-merge."
+                exit 1
+            fi
+            
+            echo "config=$config" >> $GITHUB_OUTPUT
+
+  sync:
+    needs: [setup]
+    if: ${{ needs.setup.outputs.trigger_automerge == 'yes' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        mapping: ${{ fromJSON(needs.setup.outputs.matrix) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - name: configure git committer string
+        run: |-
+          git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+          git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com>'
+
+      - name: Sync Repository
+        run: ./scripts/sync-git-repos.sh
+        env:
+            UPSTREAM_REPO: "${{ matrix.mapping.src.url }}"
+            UPSTREAM_BRANCH: "${{ matrix.mapping.src.branch }}"
+            DOWNSTREAM_REPO: "${{ matrix.mapping.dest.url }}"
+            DOWNSTREAM_BRANCH: "${{ matrix.mapping.dest.branch }}"
+            IGNORE_FILES: "${{ matrix.mapping.ignore-files }}"
+            GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+            MERGE_ARGS: "--no-edit"
+            PUSH_ARGS: ""
+            FETCH_ARGS: ""

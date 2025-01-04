@@ -1,4 +1,4 @@
-name: Gated Auto-Merger
+name: Gated Auto Merger
 
 run-name: GAM Trigger - ${{ inputs.component }}-${{ inputs.gam_trigger_run_id }}
 

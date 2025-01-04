@@ -38,7 +38,7 @@ class GamController:
                 'git': None,
                 'job_run_url': None,
                 'nvr': None,
-                'result': None,
+                'trigger_automerge': None,
                 'status': None
             }
         }
