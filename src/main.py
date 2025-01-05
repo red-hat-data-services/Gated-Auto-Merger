@@ -6,10 +6,11 @@ import sys
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--component', required=True, help='Name of the Business Component', dest='component')
-    parser.add_argument('--execution_id', required=True, help='A Unique ID for The GAM Execution', dest='execution_id')
+    parser.add_argument('--execution_id', required=False, help='A Unique ID for The GAM Execution', dest='execution_id')
+    parser.add_argument('--gam_run_url', required=False, help='Github Action Job run URL for GAM', dest='gam_run_url')
     args = parser.parse_args()
     
-    gc = GamController(args.component, args.execution_id)
+    gc = GamController(args.component, args.execution_id, args.gam_run_url)
     print("====================================================")
     print("                 Component Config                   ")
     print("====================================================")
