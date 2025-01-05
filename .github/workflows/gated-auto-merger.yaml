@@ -95,7 +95,7 @@ jobs:
 
     - name: configure git committer string
       run: |
-        git config --global user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+        git config --global user.name '${{ steps.app-token.outputs.app-slug }}'
         git config --global user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com>'
 
     - uses: actions/checkout@v3
@@ -130,5 +130,5 @@ jobs:
         cd metadata
         git status
         git add .
-        git commit -m "Adding metadata.yaml - Component: '${{ inputs.component }}', Execution ID: '${{ env.GAM_EXECUTION_ID }}'"
+        git commit -m "Adding metadata.yaml - ${{ inputs.component }}/${{ env.GAM_EXECUTION_ID }}"
         git push origin metadata
