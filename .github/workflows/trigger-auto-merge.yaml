@@ -1,2 +1,15 @@
 # This is a placeholder file
 # please refer to https://github.com/red-hat-data-services/Gated-Auto-Merger/blob/metadata/.github/workflows/trigger-auto-merge.yaml
+name: Trigger Auto Merge
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dummy-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Message
+      run: |
+        echo "This is a placeholder file"
+        echo "please refer to https://github.com/red-hat-data-services/Gated-Auto-Merger/blob/metadata/.github/workflows/trigger-auto-merge.yaml"
