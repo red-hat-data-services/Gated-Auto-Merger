@@ -1,0 +1,53 @@
+config:
+  name: Dashboard
+  test_config:
+    robot_tags:
+      - Dashboard
+    platform: Jenkins
+    job_url: ''
+  repositories:
+    - name: odh-dashboard
+      src:
+        url: https://github.com/opendatahub-io/odh-dashboard.git
+        branch: sync-test
+      dest:
+        url: https://github.com/red-hat-data-services/odh-dashboard-sync.git
+        branch: main
+      ignore_files:
+        - .env
+        - .env.test
+    - name: odh-operator
+      src:
+        url: https://github.com/opendatahub-io/opendatahub-operator.git
+        branch: sync-test
+      dest:
+        url: https://github.com/red-hat-data-services/opendatahub-operator-sync.git
+        branch: main
+metadata:
+  git:
+    - name: odh-dashboard
+      src:
+        url: https://github.com/opendatahub-io/odh-dashboard.git
+        branch: 4260e3efb967a778a56339b99ac50ee43fc272aa
+      dest:
+        url: https://github.com/red-hat-data-services/odh-dashboard-sync.git
+        branch: main
+      ignore_files:
+        - .env
+        - .env.test
+    - name: odh-operator
+      src:
+        url: https://github.com/opendatahub-io/opendatahub-operator.git
+        branch: 47007f28297eaef58078bf57c443deec9b67f2c2
+      dest:
+        url: https://github.com/red-hat-data-services/opendatahub-operator-sync.git
+        branch: main
+  nvr: odh-operator-bundle-container-v1.18.0-560
+  execution_id: '050125131458619161'
+  path: executions/Dashboard/050125131458619161
+  gam_run_url: 
+    https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619858746
+  test_run_url:
+  test_result:
+  auto_merge_url:
+  status: TestingInProgress
