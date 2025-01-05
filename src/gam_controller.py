@@ -55,6 +55,7 @@ class GamController:
         # Save the updated metadata to the file
         yaml = ruamel.yaml.YAML()
         yaml.indent(mapping=2, sequence=4, offset=2)
+        yaml.width = 500
         with open(METADATA, 'w') as metadata:
             yaml.dump(execution_metadata, metadata)
 
