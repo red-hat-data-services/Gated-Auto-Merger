@@ -22,7 +22,6 @@ def populate_execution_metadata(execution_metadata, component_config):
     # Update the metadata with the NVR from the CVP file
     execution_metadata['metadata']['nvr'] = cvp['artifact']['nvr']
     
-    execution_metadata['metadata']['trigger_automerge'] = 'no'
     execution_metadata['metadata']['status'] = 'TestingInProgress'
     execution_metadata['metadata']['git'] = component_config['repositories']
     

@@ -32,11 +32,14 @@ class GamController:
         return datetime.now().strftime('%d%m%y%H%M%S%f')
 
     def generate_execution_metadata(self):
+        metadata_path = "executions/" + self.component_config['name'] + "/" + self.execution_id
+        
         # Initialize the execution metadata template
         execution_metadata_template = {
             'config': self.component_config,
             'metadata': {
                 'execution_id': self.execution_id,
+                'path': metadata_path,
                 'git': None,
                 'nvr': None,
                 'gam_run_url': self.gam_run_url,
