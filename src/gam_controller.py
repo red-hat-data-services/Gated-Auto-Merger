@@ -1,7 +1,7 @@
 from datetime import datetime
 import json
 import os
-import yaml
+import ruamel.yaml
 from hydra_adapter import HydraAdapter
 import util
 
@@ -20,7 +20,7 @@ class GamController:
         self.hydra_payload = self.generate_hydra_payload()
 
     def read_gam_config(self):
-        return yaml.load(open(GAM_CONFIG), Loader=yaml.SafeLoader)
+        return ruamel.yaml.YAML(typ='safe').load(open(GAM_CONFIG))
     
     def read_component_config(self):
         try:
@@ -38,14 +38,14 @@ class GamController:
         execution_metadata_template = {
             'config': self.component_config,
             'metadata': {
-                'execution_id': self.execution_id,
-                'path': metadata_path,
                 'git': None,
                 'nvr': None,
+                'execution_id': self.execution_id,
+                'path': metadata_path,
                 'gam_run_url': self.gam_run_url,
-                'auto_merge_url': None,
                 'test_run_url': None,
                 'test_result': None,
+                'auto_merge_url': None,
                 'status': None
             }
         }
@@ -53,8 +53,10 @@ class GamController:
         execution_metadata = util.populate_execution_metadata(execution_metadata_template, self.component_config)
 
         # Save the updated metadata to the file
+        yaml = ruamel.yaml.YAML()
+        yaml.indent(mapping=2, sequence=4, offset=2)
         with open(METADATA, 'w') as metadata:
-            metadata.write(yaml.dump(execution_metadata))
+            yaml.dump(execution_metadata, metadata)
 
         return execution_metadata
     

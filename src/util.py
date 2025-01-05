@@ -1,7 +1,7 @@
 import copy
 import git
 import json
-import yaml
+import ruamel.yaml
 import tempfile
 
 def populate_execution_metadata(execution_metadata, component_config):
@@ -17,7 +17,7 @@ def populate_execution_metadata(execution_metadata, component_config):
     
     # Load the necessary files from the cloned repo
     cvp = json.load(open(temp_dir + '/build/latest/cvp.json'))
-    upstream_sources = yaml.safe_load(open(temp_dir + '/build/latest/upstream_sources.yml', 'r'))
+    upstream_sources = ruamel.yaml.YAML(typ='safe').load(open(temp_dir + '/build/latest/upstream_sources.yml', 'r'))
     
     # Update the metadata with the NVR from the CVP file
     execution_metadata['metadata']['nvr'] = cvp['artifact']['nvr']
