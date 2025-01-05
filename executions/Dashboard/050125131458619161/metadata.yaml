@@ -47,7 +47,7 @@ metadata:
   path: executions/Dashboard/050125131458619161
   gam_run_url: 
     https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619858746
-  test_run_url:
-  test_result:
+  test_run_url: https://some-dummy/url/for/testing/15678186386
+  test_result: Pass
   auto_merge_url:
-  status: TestingInProgress
+  status: TestingCompleted
