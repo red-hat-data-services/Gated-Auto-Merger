@@ -45,9 +45,8 @@ metadata:
   nvr: odh-operator-bundle-container-v1.18.0-560
   execution_id: '050125131458619161'
   path: executions/Dashboard/050125131458619161
-  gam_run_url: 
-    https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619858746
+  gam_run_url: https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619858746
   test_run_url: https://some-dummy/url/for/testing/15678186386
   test_result: Pass
-  auto_merge_url:
-  status: TestingCompleted
+  auto_merge_url: https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619880940
+  status: success
