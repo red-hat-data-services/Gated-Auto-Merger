@@ -3,5 +3,5 @@
 METADATA="data/metadata.yaml"
 
 
-pipenv run python src/main.py --component Dashboard --execution_id 123456
+pipenv run python src/main.py --component Dashboard
 

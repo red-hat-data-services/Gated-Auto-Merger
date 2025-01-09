@@ -19,8 +19,9 @@ def populate_execution_metadata(execution_metadata, component_config):
     cvp = json.load(open(temp_dir + '/build/latest/cvp.json'))
     upstream_sources = ruamel.yaml.YAML(typ='safe').load(open(temp_dir + '/build/latest/upstream_sources.yml', 'r'))
     
-    # Update the metadata with the NVR from the CVP file
+    # Update the metadata with the NVR and index image from the CVP file
     execution_metadata['metadata']['nvr'] = cvp['artifact']['nvr']
+    execution_metadata['metadata']['index_image'] = cvp['pipeline']['index_image']
     
     execution_metadata['metadata']['status'] = 'TestingInProgress'
     execution_metadata['metadata']['git'] = component_config['repositories']

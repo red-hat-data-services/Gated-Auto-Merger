@@ -39,6 +39,7 @@ class GamController:
             'config': self.component_config,
             'metadata': {
                 'git': None,
+                'index_image': None,
                 'nvr': None,
                 'execution_id': self.execution_id,
                 'path': metadata_path,
