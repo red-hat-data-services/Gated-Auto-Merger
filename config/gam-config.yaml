@@ -8,7 +8,7 @@ components:
       - name: odh-dashboard
         src:
           url: https://github.com/opendatahub-io/odh-dashboard.git
-          branch: main
+          branch: sync-test
         dest:
           url: https://github.com/red-hat-data-services/odh-dashboard-sync.git
           branch: main
@@ -16,7 +16,7 @@ components:
       - name: odh-operator
         src:
           url: https://github.com/opendatahub-io/opendatahub-operator.git
-          branch: main
+          branch: sync-test
         dest:
           url: https://github.com/red-hat-data-services/opendatahub-operator-sync.git
           branch: main
