@@ -2,60 +2,51 @@ config:
   name: Dashboard
   test_config:
     robot_tags:
-    - Dashboard
+      - Dashboard
     platform: Jenkins
     job_url: ''
   repositories:
-  - name: odh-dashboard
-    src:
-      url: https://github.com/opendatahub-io/odh-dashboard.git
-      branch: main
-    dest:
-      url: https://github.com/red-hat-data-services/odh-dashboard-sync.git
-      branch: main
-    ignore_files:
-    - .env
-    - .env.test
-  - name: odh-operator
-    src:
-      url: https://github.com/opendatahub-io/opendatahub-operator.git
-      branch: main
-    dest:
-      url: https://github.com/red-hat-data-services/opendatahub-operator-sync.git
-      branch: main
+    - name: odh-dashboard
+      src:
+        url: https://github.com/opendatahub-io/odh-dashboard.git
+        branch: sync-test
+      dest:
+        url: https://github.com/red-hat-data-services/odh-dashboard-sync.git
+        branch: main
+      ignore_files:
+        - .env
+        - .env.test
+    - name: odh-operator
+      src:
+        url: https://github.com/opendatahub-io/opendatahub-operator.git
+        branch: sync-test
+      dest:
+        url: https://github.com/red-hat-data-services/opendatahub-operator-sync.git
+        branch: main
 metadata:
   git:
-  - name: odh-dashboard
-    src:
-      url: https://github.com/opendatahub-io/odh-dashboard.git
-      branch: ce63518d64b85c84b676df8921698d714c067a4f
-    dest:
-      url: https://github.com/red-hat-data-services/odh-dashboard-sync.git
-      branch: main
-    ignore_files:
-    - .env
-    - .env.test
-  - name: odh-operator
-    src:
-      url: https://github.com/opendatahub-io/opendatahub-operator.git
-      branch: 326e4fc9ff1e7712cc32d60e5081722c87ea63b7
-    dest:
-      url: https://github.com/red-hat-data-services/opendatahub-operator-sync.git
-      branch: main
-  index_image:
-    v4.17: registry-proxy.engineering.redhat.com/rh-osbs/iib:891634
-    v4.18: registry-proxy.engineering.redhat.com/rh-osbs/iib:891635
-    v4.14: registry-proxy.engineering.redhat.com/rh-osbs/iib:891631
-    v4.16: registry-proxy.engineering.redhat.com/rh-osbs/iib:891633
-    v4.15: registry-proxy.engineering.redhat.com/rh-osbs/iib:891632
-    v4.19: registry-proxy.engineering.redhat.com/rh-osbs/iib:891636
-  nvr: odh-operator-bundle-container-v1.18.0-580
-  execution_id: '090125133519231270'
-  path: executions/Dashboard/090125133519231270
-  gam_run_url: https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12690975569
-  test_run_url: http://10.0.215.94:8080//job/odh/job/autotrigger-smoke/12/TestReport/
-  test_result: SUCCESS
-  auto_merge_url: null
-  status: TestingInProgress
-test_run_url: http://10.0.215.94:8080//job/odh/job/autotrigger-smoke/11/TestReport/
-test_result: passed
+    - name: odh-dashboard
+      src:
+        url: https://github.com/opendatahub-io/odh-dashboard.git
+        branch: 4260e3efb967a778a56339b99ac50ee43fc272aa
+      dest:
+        url: https://github.com/red-hat-data-services/odh-dashboard-sync.git
+        branch: main
+      ignore_files:
+        - .env
+        - .env.test
+    - name: odh-operator
+      src:
+        url: https://github.com/opendatahub-io/opendatahub-operator.git
+        branch: 47007f28297eaef58078bf57c443deec9b67f2c2
+      dest:
+        url: https://github.com/red-hat-data-services/opendatahub-operator-sync.git
+        branch: main
+  nvr: odh-operator-bundle-container-v1.18.0-560
+  execution_id: '050125131458619161'
+  path: executions/Dashboard/050125131458619161
+  gam_run_url: https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619858746
+  test_run_url: https://some-dummy/url/for/testing/15678186386
+  test_result: Pass
+  auto_merge_url: https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619880940
+  status: success
