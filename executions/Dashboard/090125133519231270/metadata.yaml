@@ -46,7 +46,7 @@ metadata:
   execution_id: '050125131458619161'
   path: executions/Dashboard/050125131458619161
   gam_run_url: https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619858746
-  test_run_url: http://10.0.215.94:8080//job/odh/job/autotrigger-smoke/18/robot/report/test_report.html
+  test_run_url: http://10.0.215.94:8080//job/odh/job/autotrigger-smoke/19/robot/report/test_report.html
   test_result: SUCCESS
   auto_merge_url: https://github.com/red-hat-data-services/Gated-Auto-Merger/actions/runs/12619880940
   status: success
