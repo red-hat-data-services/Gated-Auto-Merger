@@ -1,11 +1,11 @@
 git:
 - automerge: 'yes'
   branch: main
-  commit: 8a67079ce5cc89e790ab38a3bfebe64ce0d6a6b6
+  commit: 135e2bab1b8c91a84444ee6f79af5f4badb78590
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: main
-  commit: 343c98da25ad7ea7483eb2271c6886dbaa3fcf31
+  commit: d30f259f9fced065efb3ef00540d09d70d09928a
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: main
@@ -41,7 +41,7 @@ git:
   url: https://github.com/trustyai-explainability/trustyai-explainability.git
 - automerge: 'yes'
   branch: main
-  commit: 10c0fc3e3c45a7dc3054733b8792349db4ad71c5
+  commit: 013b971fb66948730a83dca4a621c4ddea860d7b
   url: https://github.com/trustyai-explainability/trustyai-service-operator.git
 - automerge: 'yes'
   branch: main
@@ -57,19 +57,19 @@ git:
   url: https://github.com/opendatahub-io/codeflare-operator.git
 - automerge: 'yes'
   branch: main
-  commit: ac45e514cc1921052aea371282287e23c7650823
+  commit: 9e11f0a37dc8d9735b02f7b1e94b44a49b9fbbc7
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: main
-  commit: c04fc77be7446acffcf0c2a54de9d4621e12ee08
+  commit: fb9ab0132843316cd6a9c29678d2d7e5af88314d
   url: https://github.com/opendatahub-io/notebooks.git
 - automerge: 'yes'
   branch: release-v0.14
-  commit: da87cb0904ddeba2b1772c4ca571e1ea1fd3e3b9
+  commit: 01fe68df6e71a06a83df4a69d471fbdc4e07dc1f
   url: https://github.com/opendatahub-io/kserve.git
 - automerge: 'yes'
   branch: main
-  commit: 9d4492bef66315ce874cad3efc79b9a3f66ae056
+  commit: 823fc62773caaf72c9dbf991fc283683a26ac409
   url: https://github.com/opendatahub-io/model-registry.git
 - automerge: 'yes'
   branch: main
@@ -89,7 +89,7 @@ git:
   url: https://github.com/opendatahub-io/argo-workflows.git
 - automerge: 'yes'
   branch: master
-  commit: df01083cd2175829e736f8e098aadc975e9bb092
+  commit: 4e9be515a5170bd8925a6f8d6197e95dc1f80dc8
   url: https://github.com/opendatahub-io/data-science-pipelines.git
 - automerge: 'yes'
   branch: dev
