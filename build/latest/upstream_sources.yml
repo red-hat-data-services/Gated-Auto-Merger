@@ -1,35 +1,35 @@
 git:
 - automerge: 'yes'
   branch: stable-2.x
-  commit: ee31b93a544700ef9d8936dad649380adea54665
+  commit: 678605664ad3142ceb1a01041421684d1e280228
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 97ddf574e74be440075273c73e5a97c71d635759
+  commit: b8101a52dfdb3f8ab8e5772a3caf8c630d17ed06
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: e20dc4ea38810afe5150820f92e323f4901088b2
+  commit: e67e9f693be4937a7c6082f431c1fd2d5899ce82
   url: https://github.com/opendatahub-io/kubeflow.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 5114ac9bad728095118c0292136c8e573f9148ef
+  commit: ed94b097b41735b1474d8c6374c95011bdc744f7
   url: https://github.com/opendatahub-io/modelmesh-serving.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 543d3e3b5a59624bb2f5a6bbcecf386fc9ecbbe8
+  commit: 6273c039e4413d246c11c2d02f189aebeb126a20
   url: https://github.com/opendatahub-io/odh-model-controller.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 3b36b735a6c76afa57a6eb1fa4c5fdff606dae86
+  commit: 857fc5e554145775712c1304df897798191cc179
   url: https://github.com/opendatahub-io/rest-proxy.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: e0196aef53821af7f134341ef6e215c844b10548
+  commit: d8d9cda247735695afec968d05f44e695fb15e93
   url: https://github.com/opendatahub-io/modelmesh.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: bd327064d5e694566b322eee2885be20a5f0cc70
+  commit: 357fea5ef7217180fa7d872fb4976df9835f2e42
   url: https://github.com/opendatahub-io/modelmesh-runtime-adapter.git
 - automerge: 'yes'
   branch: master
@@ -41,11 +41,11 @@ git:
   url: https://github.com/opendatahub-io/trustyai-explainability.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 757099f0888b3441fc9b8ffed483361ae689a145
+  commit: 40e7150c1732f62b15ecfa632d6d6b10802520b1
   url: https://github.com/opendatahub-io/trustyai-service-operator.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: cf99901c6d7498c11aae1a03924594b8ffe0e07b
+  commit: 409cce7846d5db865cf63fa31fd4411e31738e2e
   url: https://github.com/opendatahub-io/data-science-pipelines-operator.git
 - automerge: 'yes'
   branch: stable-2.x
@@ -53,27 +53,27 @@ git:
   url: https://github.com/opendatahub-io/kuberay.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 8619efa4358be6569f32fbce23bab3a58f284c8e
+  commit: 811f6d84a8c790f48716055e1fb52dccb365b8fc
   url: https://github.com/opendatahub-io/codeflare-operator.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 0235a63260caa26364ed02d2efc3175ab8489e77
+  commit: 030b2058e093ee118731ed150dca36e484913450
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: f96d603670a3551f2175e4757f860681a7185109
+  commit: 07d8945ee527fec1ba0b870513fffc9fdf32d662
   url: https://github.com/opendatahub-io/notebooks.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 7df707e371a6533e27225d40c8b1a64a5ea77be1
+  commit: c8551423b8fc32949c249cb9aec694cd982d8f18
   url: https://github.com/opendatahub-io/kserve.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 65800a79cb4edcabf7eab9c83d37ae238d53cc03
+  commit: 909bc780a821b034910aba66503fa76ad697e936
   url: https://github.com/opendatahub-io/model-registry.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 785124cf862470520fc85396f81f64c5108c9cc1
+  commit: c86d4ead2014ff35a4c283162642a85c84aa7417
   url: https://github.com/opendatahub-io/model-registry-operator.git
 - automerge: 'yes'
   branch: stable-2.x
@@ -85,11 +85,11 @@ git:
   url: https://github.com/opendatahub-io/ml-metadata.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 1f436953b8de9f03b25dd67771c635266fdb44e5
+  commit: 25441539fe28a972fc4a0398e4fde15ddd0b4a6a
   url: https://github.com/opendatahub-io/argo-workflows.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 90c5a1cc4cf0f04bdf6ca8274d24ed1ff74918a5
+  commit: 34c87789dc3b8478e9d5af8e07dfcedcd9b224ef
   url: https://github.com/opendatahub-io/data-science-pipelines.git
 - automerge: 'yes'
   branch: stable-2.x
