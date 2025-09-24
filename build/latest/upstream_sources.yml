@@ -1,15 +1,15 @@
 git:
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 763100ff7076b6818fc1dd7cdc0d9475e1392738
+  commit: 4eb94f5f5b2c64061f1312b6b7052c02a3289018
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: adf095f55bcf11d0b37b16c8931a3427a27aa5fe
+  commit: e908ff4ceca14d31a8144f01a640d989e173611c
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 5bbc04ac2929738450d2a0f4d0c72cee0252eeaa
+  commit: 555a77123b2e3428c415e216d3cbd6eb1934df44
   url: https://github.com/opendatahub-io/kubeflow.git
 - automerge: 'yes'
   branch: stable-2.x
@@ -41,7 +41,7 @@ git:
   url: https://github.com/opendatahub-io/trustyai-explainability.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 6b4663033aa7269fc07a3ea1f5c06881ec4d2211
+  commit: af560fd1a6e956ea34da94feab949b98c010fc05
   url: https://github.com/opendatahub-io/trustyai-service-operator.git
 - automerge: 'yes'
   branch: stable-2.x
