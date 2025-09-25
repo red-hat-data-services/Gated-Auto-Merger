@@ -1,11 +1,11 @@
 git:
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 4eb94f5f5b2c64061f1312b6b7052c02a3289018
+  commit: 45aff1952c7a4117590496a9f8d92559e7e0ec3f
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: e908ff4ceca14d31a8144f01a640d989e173611c
+  commit: 4b16f2088db66831df1db867e1359142249997fe
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: stable-2.x
@@ -73,7 +73,7 @@ git:
   url: https://github.com/opendatahub-io/model-registry.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 8ab6a39f15d626d8ae3e612a0529fafe9899b423
+  commit: ce7920c3c49ae91425aeeb958915e8e11252dcc2
   url: https://github.com/opendatahub-io/model-registry-operator.git
 - automerge: 'yes'
   branch: stable-2.x
