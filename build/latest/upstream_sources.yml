@@ -1,11 +1,11 @@
 git:
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 45aff1952c7a4117590496a9f8d92559e7e0ec3f
+  commit: f06d9cf2ec2f20928b3f0f806110d18717b5b202
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: c8b4bd30a00a3dab38bda1abac96390414198bd8
+  commit: 6792a5db2cc1cc15d66b07a19bb76dca5e6a551d
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: stable-2.x
@@ -17,7 +17,7 @@ git:
   url: https://github.com/opendatahub-io/modelmesh-serving.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 02256f1f6e223536be1f38516d558b66e18b5b59
+  commit: 6fc7af513836934729f58b50b4af34dd552f0426
   url: https://github.com/opendatahub-io/odh-model-controller.git
 - automerge: 'yes'
   branch: stable-2.x
