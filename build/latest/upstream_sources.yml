@@ -1,35 +1,35 @@
 git:
 - automerge: 'yes'
   branch: stable-2.x
-  commit: f06d9cf2ec2f20928b3f0f806110d18717b5b202
+  commit: d3368ba79ddebe2fe54a24227b28dd11c8c89474
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 6792a5db2cc1cc15d66b07a19bb76dca5e6a551d
+  commit: 7a5764db21dcc1d870dc3837718203666117f36e
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 555a77123b2e3428c415e216d3cbd6eb1934df44
+  commit: 749107c5c9996233ce854edc93a7deb7282e6d9a
   url: https://github.com/opendatahub-io/kubeflow.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: ed94b097b41735b1474d8c6374c95011bdc744f7
+  commit: ed09886d7aeac945eb170e399c32cab16cc3311e
   url: https://github.com/opendatahub-io/modelmesh-serving.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 6fc7af513836934729f58b50b4af34dd552f0426
+  commit: e05838fc5cde6bc50c2c247a7c7877f22333d85c
   url: https://github.com/opendatahub-io/odh-model-controller.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 857fc5e554145775712c1304df897798191cc179
+  commit: 640f36b332ea216aff795e2a5ceaa061f10487e4
   url: https://github.com/opendatahub-io/rest-proxy.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 625e55edb01106f3d4aa13bc05dee6ef6b5f3d24
+  commit: 68924a33198dd3656646e95178a2263dc3b8a23e
   url: https://github.com/opendatahub-io/modelmesh.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: 357fea5ef7217180fa7d872fb4976df9835f2e42
+  commit: f141b453189592792ca3f251a360589e0287ae3c
   url: https://github.com/opendatahub-io/modelmesh-runtime-adapter.git
 - automerge: 'yes'
   branch: master
@@ -61,7 +61,7 @@ git:
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: stable-2.x
-  commit: b83f9d2e690f8ce65c0289d175354a0172332eaa
+  commit: 50c8e9e68e7e6517063a19efeb67bb02725663e7
   url: https://github.com/opendatahub-io/notebooks.git
 - automerge: 'yes'
   branch: stable-2.x
