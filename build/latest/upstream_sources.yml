@@ -1,15 +1,15 @@
 git:
 - automerge: 'yes'
   branch: main
-  commit: 16820201ea6efd3aee4de7b64b0e3f0eeb7bcd57
+  commit: 07804b0b50498b8fe8e1bc43860173ead790e5e3
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: main
-  commit: cb7eff5b75e431b93cfb0764b8fbd13cc2f184a5
+  commit: 794c6c0cb9aed11b61ae341308327243b927cea6
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: main
-  commit: 121a467690d03514277a7d30c16c311815b1877f
+  commit: 909a62e24fae72e5bbb6ed255a322d692b629e15
   url: https://github.com/opendatahub-io/kubeflow.git
 - automerge: 'yes'
   branch: main
@@ -17,11 +17,11 @@ git:
   url: https://github.com/opendatahub-io/modelmesh-serving.git
 - automerge: 'yes'
   branch: incubating
-  commit: 0127a4910c8c6bfa1845b97a9205278999b3205a
+  commit: d3868940d3dfc0a4bed30f70fbd29923c4c5bc45
   url: https://github.com/opendatahub-io/odh-model-controller.git
 - automerge: 'yes'
   branch: main
-  commit: 3b36b735a6c76afa57a6eb1fa4c5fdff606dae86
+  commit: 22e54021f5dd5e62aa4a90847c4cf831d65313e9
   url: https://github.com/opendatahub-io/rest-proxy.git
 - automerge: 'yes'
   branch: main
@@ -57,7 +57,7 @@ git:
   url: https://github.com/opendatahub-io/codeflare-operator.git
 - automerge: 'yes'
   branch: main
-  commit: 6eab168fe7ba42d358602db5464042b1aa3f0094
+  commit: 540c42ee7da1dacc42810250d442cfe28632190a
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: main
@@ -69,11 +69,11 @@ git:
   url: https://github.com/opendatahub-io/kserve.git
 - automerge: 'yes'
   branch: main
-  commit: f051785757198d4806e3f20bbd9dc7c03b17127f
+  commit: fc012fb7ac07636e3c7b6bde67b70ea3bb43d771
   url: https://github.com/opendatahub-io/model-registry.git
 - automerge: 'yes'
   branch: main
-  commit: cbc48624a6343d895f2722959cca3888eb2569fc
+  commit: 9da279e650f4cc1b59305b3eb8b76428ede41769
   url: https://github.com/opendatahub-io/model-registry-operator.git
 - automerge: 'yes'
   branch: dev
