@@ -48,7 +48,7 @@ git:
   commit: bdf7dcc340bee0ad3bfe0c17d857e090cd06243b
   url: https://github.com/opendatahub-io/data-science-pipelines-operator.git
 - automerge: 'yes'
-  branch: dev
+  branch: stable
   commit: b9e26fa34f9128594841fcd1df079ee2e9269fb2
   url: https://github.com/opendatahub-io/kuberay.git
 - automerge: 'yes'
