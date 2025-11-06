@@ -5,7 +5,7 @@ git:
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: main
-  commit: 31721538ff416b25994b21021760308b9ed40e76
+  commit: 79c716b8777d34ec7513c8e9613f0f868c8f0fa2
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: main
@@ -17,7 +17,7 @@ git:
   url: https://github.com/opendatahub-io/modelmesh-serving.git
 - automerge: 'yes'
   branch: incubating
-  commit: 761e9e794ffd36b6ec144ffece746eebb00cfe69
+  commit: 72e15dba5217e7ffb76995fd75720d806808616d
   url: https://github.com/opendatahub-io/odh-model-controller.git
 - automerge: 'yes'
   branch: main
@@ -65,7 +65,7 @@ git:
   url: https://github.com/opendatahub-io/notebooks.git
 - automerge: 'yes'
   branch: release-v0.15
-  commit: 57e3509b6d0e5fa9fdbd5dc70e0565817cb193c9
+  commit: 95b737f413719210d08fba9ded508ba1d83af6c9
   url: https://github.com/opendatahub-io/kserve.git
 - automerge: 'yes'
   branch: main
@@ -73,7 +73,7 @@ git:
   url: https://github.com/opendatahub-io/model-registry.git
 - automerge: 'yes'
   branch: main
-  commit: 725527652263ab04fc110d02acc6a56a99e33b09
+  commit: 9d150b275705b0bbc452c6aa9fc3267003c81420
   url: https://github.com/opendatahub-io/model-registry-operator.git
 - automerge: 'yes'
   branch: dev
