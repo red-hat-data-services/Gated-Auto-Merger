@@ -1,11 +1,11 @@
 git:
 - automerge: 'yes'
   branch: main
-  commit: e7eb9b68844fe11f6d879cea9e50f4928383cd36
+  commit: 99cb856985700460939e3191156693cce59980e6
   url: https://github.com/opendatahub-io/opendatahub-operator.git
 - automerge: 'yes'
   branch: main
-  commit: d366243ec3430b6d7fefa03df196bb95179dfdea
+  commit: e4e6e8cff186f19e6766dbbf9752df3649fc9ff9
   url: https://github.com/opendatahub-io/odh-dashboard.git
 - automerge: 'yes'
   branch: main
@@ -45,7 +45,7 @@ git:
   url: https://github.com/opendatahub-io/trustyai-service-operator.git
 - automerge: 'yes'
   branch: stable
-  commit: c74813c51bb35e577badf7481d56d62d606c79e2
+  commit: 43507a0ee4c8a1b2b4e6edae1f2e23bc1c14d0f1
   url: https://github.com/opendatahub-io/data-science-pipelines-operator.git
 - automerge: 'yes'
   branch: stable
@@ -57,7 +57,7 @@ git:
   url: https://github.com/opendatahub-io/codeflare-operator.git
 - automerge: 'yes'
   branch: main
-  commit: 4945372db84b1698d66cc3b4ce8bc52819b4a820
+  commit: 9861fae5bf350e72992554599d9a0248e87d0a6c
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: stable
@@ -65,15 +65,15 @@ git:
   url: https://github.com/opendatahub-io/notebooks.git
 - automerge: 'yes'
   branch: release-v0.15
-  commit: 5f4a1331c3b044983295c382878fc7b4933ba1be
+  commit: 2818dee265ddd6ec4fc6f5b0b2dfcf54c038a2a7
   url: https://github.com/opendatahub-io/kserve.git
 - automerge: 'yes'
   branch: main
-  commit: fa47412fec474448cea391d8a13b89d275746971
+  commit: c71dc93aa97669ef79caa42622acd0a050cb58f8
   url: https://github.com/opendatahub-io/model-registry.git
 - automerge: 'yes'
   branch: main
-  commit: bcf53f4ed63df6b96f7fb3f7b6e3a7a2eb5de2d3
+  commit: 0e374b44a9f77a4433752d82f41eb09ef00b03e5
   url: https://github.com/opendatahub-io/model-registry-operator.git
 - automerge: 'yes'
   branch: dev
@@ -81,11 +81,11 @@ git:
   url: https://github.com/opendatahub-io/kueue.git
 - automerge: 'yes'
   branch: main
-  commit: dfc76e1ce40b521a661a3ef05efbeb6662a7fe5f
+  commit: 790efd2234aa7eab77d2379d41a203f5d5ffbacb
   url: https://github.com/opendatahub-io/argo-workflows.git
 - automerge: 'yes'
   branch: stable
-  commit: 1877f066a71ad0894a150141c490337e33f35356
+  commit: 4ccb6ffc0d307a923f0f755e79b94a482d8143af
   url: https://github.com/opendatahub-io/data-science-pipelines.git
 - automerge: 'yes'
   branch: dev
