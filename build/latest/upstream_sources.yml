@@ -61,7 +61,7 @@ git:
   url: https://github.com/opendatahub-io/distributed-workloads.git
 - automerge: 'yes'
   branch: stable
-  commit: a27ed6e03d1463345f1008a03db438f54e2f25b1
+  commit: 62138aeafc1c944057d2f3074c78d79445653730
   url: https://github.com/opendatahub-io/notebooks.git
 - automerge: 'yes'
   branch: release-v0.15
